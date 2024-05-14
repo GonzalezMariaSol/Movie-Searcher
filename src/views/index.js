@@ -1,3 +1,4 @@
 import Home from "./Home";
+import LatestReleases from "./LatestReleases";
 
-export {Home}
+export {Home, LatestReleases}
