@@ -4,6 +4,9 @@ import { IconButton } from "@mui/material";
 //ESTILOS
 import styled from "styled-components";
 
+//NAVEGACION
+import { useNavigate } from "react-router-dom"; 
+
 //tomo los valores de iconButton pero los customizo un poco a mi necesidad
 const CustomIconButton = styled(IconButton)`
   width: 110px;
@@ -32,7 +35,11 @@ const TextOverlay = styled.div`
   font-size: 16px;
 `;
 
+
 const Navbar = () => {
+
+  const navigate = useNavigate(); // inicializamos función navigate
+
   return (
     <>
       <CustomImg
@@ -55,23 +62,31 @@ const Navbar = () => {
       >
         Movie-thon
       </p>
-      <CustomIconButton style={{ marginRight: "50px" }}>
+      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/")}
+>
         <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
         <TextOverlay>Home</TextOverlay>
       </CustomIconButton>
-      <CustomIconButton style={{ marginRight: "50px" }}>
+
+      <CustomIconButton
+        style={{ marginRight: "50px" }}
+        onClick={() => navigate("/latestReleases")}
+      >
         <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
         <TextOverlay>Recent Releases</TextOverlay>
       </CustomIconButton>
-      <CustomIconButton style={{ marginRight: "50px" }}>
+
+      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/popularMovies")}>
         <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
         <TextOverlay>Popular</TextOverlay>
       </CustomIconButton>
-      <CustomIconButton style={{ marginRight: "50px" }}>
+
+      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/searchMovies")}>
         <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
         <TextOverlay>Search</TextOverlay>
       </CustomIconButton>
-      <CustomIconButton style={{ marginRight: "50px" }}>
+
+      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/favoriteMovies")}>
         <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
         <TextOverlay>Favorites</TextOverlay>
       </CustomIconButton>
