@@ -1,4 +1,4 @@
-import React from "react";
+//MUI ELEMENTOS
 import { Box, Button } from "@mui/material";
 
 function MovieSlide({ movie }) {
@@ -29,9 +29,8 @@ function MovieSlide({ movie }) {
         alt="Movie poster"
         style={{
           width: "100%",
-          objectFit: "cover", // Para que la imagen se recorte y ocupe todo el espacio
-          objectPosition: "center top", //
-          //   objectPosition: "center" //
+          objectFit: "cover",
+          objectPosition: "center top", 
         }}
       />
 
@@ -47,7 +46,7 @@ function MovieSlide({ movie }) {
           transform: "translate(-50%, -50%)",
           textAlign: "center",
           borderRadius: "5px",
-          height: "auto", // Altura automática
+          height: "auto",
         }}
       >
         <h3 style={{ fontWeight: "bold" }}>{movie.title}</h3>
