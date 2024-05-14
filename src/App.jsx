@@ -1,14 +1,19 @@
 //COMPONENTS
-import './App.css'
-import { Header } from './components/static'
+import "./App.css";
+import { Header } from "./components/static";
+import { Home } from "./views"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-
   return (
-    <div style={{ fontFamily: 'Luckiest Guy, cursive', fontWeight: 400, fontStyle: 'normal' }}>
-    <Header />
-    </div>
-  )
+
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
