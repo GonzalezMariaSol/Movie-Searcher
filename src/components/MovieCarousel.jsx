@@ -1,6 +1,7 @@
-import React from "react";
-import MovieSlide from "./MovieSlide"; //guarda solo UNA visual de una pelicula, luego tengo que reutilizarlo
+//COMPONENTES
+import {MovieSlide} from "./"
 
+//SLIDERS
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

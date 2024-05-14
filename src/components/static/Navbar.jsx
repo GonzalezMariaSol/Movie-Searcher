@@ -1,4 +1,7 @@
+//MUI ELEMENTOS
 import { IconButton } from "@mui/material";
+
+//ESTILOS
 import styled from "styled-components";
 
 //tomo los valores de iconButton pero los customizo un poco a mi necesidad
@@ -53,23 +56,23 @@ const Navbar = () => {
         Movie-thon
       </p>
       <CustomIconButton style={{ marginRight: "50px" }}>
-        <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn" />
+        <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
         <TextOverlay>Home</TextOverlay>
       </CustomIconButton>
       <CustomIconButton style={{ marginRight: "50px" }}>
-        <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn" />
+        <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
         <TextOverlay>Recent Releases</TextOverlay>
       </CustomIconButton>
       <CustomIconButton style={{ marginRight: "50px" }}>
-        <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn" />
+        <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
         <TextOverlay>Popular</TextOverlay>
       </CustomIconButton>
       <CustomIconButton style={{ marginRight: "50px" }}>
-        <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn" />
+        <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
         <TextOverlay>Search</TextOverlay>
       </CustomIconButton>
       <CustomIconButton style={{ marginRight: "50px" }}>
-        <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn" />
+        <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
         <TextOverlay>Favorites</TextOverlay>
       </CustomIconButton>
     </>
