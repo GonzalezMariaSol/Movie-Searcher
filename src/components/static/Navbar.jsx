@@ -1,17 +1,19 @@
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
 
+//tomo los valores de iconButton pero los customizo un poco a mi necesidad
 const CustomIconButton = styled(IconButton)`
-  width: 110px; /* Tamaño del botón */
-  height: 110px; /* Tamaño del botón */
-  padding: 0; /* Elimina el relleno interno del botón */
-  position: relative; /* Establece la posición relativa para que los elementos absolutos se posicionen con respecto a este botón */
+  width: 110px;
+  height: 110px;
+  padding: 0;
+  position: relative;
 `;
 
+//tomo los valores de img, pero los customizo a mi necesidad
 const CustomImg = styled.img`
   width: 110%;
   height: 110%;
-  object-fit: contain; /* Ajusta la imagen dentro del contenedor sin cortarla */
+  object-fit: contain;
 `;
 
 const TextOverlay = styled.div`
@@ -21,7 +23,7 @@ const TextOverlay = styled.div`
   transform: translate(-50%, -50%);
   color: blue;
   padding: 8px;
-  font-family: "Luckiest Guy", cursive; /* Agrega la fuente aquí */
+  font-family: "Luckiest Guy", cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
@@ -37,13 +39,19 @@ const Navbar = () => {
           width: "100px",
           height: "100px",
           marginLeft: "10vh",
-          marginRight: "50px",
+          marginRight: "30px",
         }}
       />
-      <p style={{ fontSize: "34px", marginLeft: "10vh", color: "blue" }}>
+      <p
+        style={{
+          fontSize: "34px",
+          fontWeight: "bold",
+          fontFamily: "Luckiest Guy, cursive",
+          color: "blue",
+        }}
+      >
         Movie-thon
       </p>
-      <div style={{ flex: 1 }}></div> {/* esto es un espacio vacío */}
       <CustomIconButton style={{ marginRight: "50px" }}>
         <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn" />
         <TextOverlay>Home</TextOverlay>
