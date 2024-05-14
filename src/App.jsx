@@ -11,7 +11,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/recentReleases" element={<></>} />
+        <Route path="/popular" element={<></>} />
+        <Route path="/search" element={<></>} />
+        <Route path="/favorites" element={<></>} />
       </Routes>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
