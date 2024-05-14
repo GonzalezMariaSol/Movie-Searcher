@@ -1,7 +1,8 @@
-import React from "react";
+//MUI ELEMENTOS
 import { AppBar, Toolbar } from "@mui/material";
-import Navbar from "./Navbar";
 
+//COMPONENTES
+import { Navbar } from "./";
 
 const Header = () => {
   return (
@@ -10,14 +11,14 @@ const Header = () => {
       style={{
         background:
           "repeating-linear-gradient(to bottom, red, red 50%, white 50%, white)",
-        backgroundSize: "100% 50px", // ajusta el ancho y alto de las líneas
+        backgroundSize: "100% 50px",
       }}
     >
       <Toolbar
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center", 
+          alignItems: "center",
           width: "100%",
         }}
       >
