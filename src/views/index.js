@@ -1,4 +1,4 @@
 import Home from "./Home";
-import LatestReleases from "./LatestReleases";
+import MovieCategoryTab from "./MovieCategoryTab";
 
-export {Home, LatestReleases}
+export {Home, MovieCategoryTab}
