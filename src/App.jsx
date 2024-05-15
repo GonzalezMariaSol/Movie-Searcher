@@ -3,7 +3,7 @@ import "./App.css";
 
 //COMPONENTES
 import { Header, Footer } from "./components/static";
-import { Home, LatestReleases } from "./views" 
+import { Home, MovieCategoryTab } from "./views" 
 
 //ENRUTADORES
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -22,8 +22,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/latestReleases" element={<LatestReleases />} />
-        <Route path="/popularMovies" element={<></>} />
+        <Route path="/:movieCategory" element={<MovieCategoryTab />} />
         <Route path="/searchMovies" element={<></>} />
         <Route path="/favoriteMovies" element={<></>} />
         <Route path="/movieDetail/:idMovie" element={<></>} />
