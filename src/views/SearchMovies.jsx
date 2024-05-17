@@ -20,8 +20,7 @@ const SearchMovies = () => {
   };
 
   return (
-    <>
-      <Box style={{ backgroundColor: "green" }}>
+      <Box>
         <Box
           sx={{
             display: "flex",
@@ -47,7 +46,6 @@ const SearchMovies = () => {
         </Box>
         <GridOfMovies searchedMovie={searchedMovie} />
       </Box>
-    </>
   );
 };
 

@@ -1,10 +1,16 @@
 //MUI ELEMENTOS
 import { Box, Button } from "@mui/material";
 
+import { useNavigate } from "react-router-dom"; 
+
+
 function MovieSlide({ movie }) {
+  
+  const navigate = useNavigate(); // inicializamos función navigate
 
   //funcion que se ocupa de crear el link especifico para el poster
   const getMovieImageUrl = (movie) => {
+
     if (!movie.poster_path) {
       //si no tiene un poster la peli, devuelve null
       return null;
@@ -57,6 +63,7 @@ function MovieSlide({ movie }) {
             color: "white",
             borderRadius: "5px",
           }}
+          onClick={() => navigate(`/detail/${movie.id}`)}
         >
           See more...
         </Button>

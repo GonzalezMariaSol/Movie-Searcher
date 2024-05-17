@@ -14,6 +14,8 @@ const useMovie = () => {
   const [pages, setTotalPages] = useState(0); // Total de paginas en esa categoria
   const [currentPage, setCurrentPage] = useState(1); // Numero de pagina actual en esa categoria
 
+
+
   // Obtener las ultimas peliculas estrenadas -CARRUSEL Y TAB
   const getAllReleasedMovies = async (currentPage = 1) => {
     try {
@@ -72,19 +74,21 @@ const useMovie = () => {
     }
   };
 
+
+
   return {
     releasedMovies, // used
     popularMovies, // used
     topRatedMovies, // used
     searchedMovie, // used
-    oneMovie,
+    oneMovie, //used
     pages, // used
     currentPage, // used
     getAllReleasedMovies, // used
     getAllPopularMovies, // used
     getAllTopMovies, // used
     getSearchedMovies, // used
-    getOneMovie,
+    getOneMovie, //used
     setCurrentPage, // used
   };
 };

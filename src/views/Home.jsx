@@ -13,7 +13,7 @@ const Home = () => {
     getAllReleasedMovies(currentPage);
     getAllPopularMovies(currentPage);
     getAllTopMovies(currentPage);
-  }, [currentPage]); // actualización se ejecuta cuando se vea una modificacion en currentPage
+  }, [currentPage]); // se va a ejecutar cada vez se vea una modificacion en currentPage
 
 
 
@@ -21,7 +21,7 @@ const Home = () => {
     <>
       <MovieCarousel releasedMovies={releasedMovies} />
       <div style={{ display: "flex", justifyContent: "space-around" }}>
-{/* Expresión ternaria para renderizar los componentes solo si los arrays tienen datos -- el uso de if en jsx no me lo permitia*/}
+{/* Expresion ternaria para renderizar los componentes solo si los arrays tienen datos -- el uso de if en jsx no me lo permitia*/}
         {popularMovies.length > 0 && topRatedMovies.length > 0 && (
           <>
             <div style={{ flex: "1", marginRight: "10px" }}>
