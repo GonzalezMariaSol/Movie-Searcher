@@ -8,7 +8,6 @@ import { GridOfMovies } from "../components";
 import { Box, Typography } from "@mui/material";
 
 const MovieCategoryTab = () => {
-
   const { movieCategory } = useParams();
 
   return (

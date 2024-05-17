@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 
+import { useNavigate } from "react-router-dom";
+
 //MUI
 import { Grid, Typography, Button, IconButton, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -12,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const GridOfMovies = ({ searchedMovie }) => {
   //!PORQUE TENGO QUE PONER searchedMovie COMO PROP, PERO SI LO TRAIA A TRAVES DEL USEMOVIE NO ME LO DEJABA? (lo estoy trayendo con usemovie en searchmovies y pasandoselo aca como prop, wtf?)
+  const navigate = useNavigate(); // inicializamos función navigate
 
   const { movieCategory } = useParams();
 
@@ -86,7 +89,7 @@ const GridOfMovies = ({ searchedMovie }) => {
                   display: "flex",
                   alignItems: "flex-end",
                 }}
-                onClick={() => console.log("Hola")}
+                onClick={() => navigate(`/detail/${movie.id}`)}
               ></Box>
               <Box
                 sx={{
@@ -111,11 +114,12 @@ const GridOfMovies = ({ searchedMovie }) => {
                   {movie.title}
                 </Typography>
               </Box>
-              <Box style={{ backgroundColor: "pink", display:"flex", }}>
+              <Box style={{ backgroundColor: "pink", display: "flex" }}>
                 <IconButton
+                  onClick={() => navigate(`/detail/${movie.id}`)}
                   sx={{
                     backgroundColor: "black",
-                    borderRight:"2px solid blue",
+                    borderRight: "2px solid blue",
                     color: "#fff",
                     borderRadius: "0",
                     flexGrow: 1,
@@ -133,7 +137,7 @@ const GridOfMovies = ({ searchedMovie }) => {
                 <IconButton
                   sx={{
                     backgroundColor: "black",
-                    borderLeft:"2px solid red",
+                    borderLeft: "2px solid red",
                     color: "#fff",
                     borderRadius: "0",
                     flexGrow: 1,

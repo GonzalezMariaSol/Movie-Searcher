@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"; 
+
 //MUI ELEMENTOS
 import {
   List,
@@ -13,6 +15,9 @@ import {
 import { FaRegEye } from "react-icons/fa";
 
 const QuickDisplayHomeMovies = ({ title, movies }) => {
+
+  const navigate = useNavigate(); // inicializamos funcion navigate
+
   return (
     <div
       style={{
@@ -37,7 +42,7 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
             />
             <ListItemText primary={movie.title} />
             <ListItemSecondaryAction>
-              <IconButton aria-label="eye">
+              <IconButton aria-label="eye" onClick={() => navigate(`/detail/${movie.id}`)}>
                 <FaRegEye style={{ fontSize: "30px" }} />
               </IconButton>
             </ListItemSecondaryAction>

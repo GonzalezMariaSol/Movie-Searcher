@@ -39,7 +39,7 @@ const TextOverlay = styled.div`
 
 const Navbar = () => {
 
-  const navigate = useNavigate(); // inicializamos función navigate
+  const navigate = useNavigate(); // inicializamos funcion navigate
 
   return (
     <>
