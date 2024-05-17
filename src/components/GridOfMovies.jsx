@@ -1,19 +1,50 @@
+//REACT
+import React, { useEffect } from "react";
+
+//HOOKS
+import { useParams } from "react-router-dom";
+import useMovie from "../hooks/useMovie";
+
+//MUI
 import { Grid, Typography, Button, IconButton, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
-const GridOfMovies = ({
-  movies,
-  onNextPage,
-  onPrevPage,
-  currentPage,
-  totalPages,
-}) => {
+const GridOfMovies = () => {
+
+  const { movieCategory } = useParams();
+
+  const { getAllReleasedMovies, releasedMovies, getAllPopularMovies, popularMovies, currentPage, setCurrentPage, pages} = useMovie();
+
+  useEffect(() => {
+    if(movieCategory === "latestReleases"){
+      getAllReleasedMovies(currentPage)
+    } else if (movieCategory === "popularMovies"){
+      getAllPopularMovies(currentPage)
+    }
+  }, [movieCategory, currentPage]);
+  
+  const movies = movieCategory === "latestReleases" ? releasedMovies : popularMovies;
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  useEffect(()=> {
+    setCurrentPage(1) 
+  }, [movieCategory])
+
+
   const getMovieImageUrl = (movie) => {
     if (!movie.poster_path) {
       return null;
     }
     return `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
   };
+
 
   return (
     <>
@@ -89,7 +120,7 @@ const GridOfMovies = ({
       <Box display="flex" justifyContent="center" marginTop="5vh">
         <Button
           variant="contained"
-          onClick={onPrevPage}
+          onClick={handlePrevPage}
           disabled={currentPage === 1}
           style={{ marginRight: "10px" }}
         >
@@ -99,12 +130,12 @@ const GridOfMovies = ({
           variant="body1"
           style={{ margin: "0 10px", fontWeight: "bold" }}
         >
-          Page {currentPage} of {totalPages}
+          Page {currentPage} of {pages}
         </Typography>
         <Button
           variant="contained"
-          onClick={onNextPage}
-          disabled={currentPage === totalPages}
+          onClick={handleNextPage}
+          disabled={currentPage === pages}
         >
           Next Page
         </Button>

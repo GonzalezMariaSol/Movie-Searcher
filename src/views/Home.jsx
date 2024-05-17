@@ -1,46 +1,27 @@
 //COMPONENTES
 import { MovieCarousel, QuickDisplayHomeMovies } from "../components";
 
-//SERVICIOS
-import axios from "axios";
-
 //HOOKS
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import useMovie from "../hooks/useMovie"
 
 const Home = () => {
-  const apiKey = "d680d948c76d81953776f10bdf72158a";
 
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const { getAllPopularMovies, getAllTopMovies, getAllReleasedMovies, releasedMovies, popularMovies, topRatedMovies, currentPage } = useMovie();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`; //armo un url para mis peliculas populares
-        const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`; //armo un url para mis peliculas mejores puntuadas
+    getAllReleasedMovies(currentPage);
+    getAllPopularMovies(currentPage);
+    getAllTopMovies(currentPage);
+  }, [currentPage]); // actualización se ejecuta cuando se vea una modificacion en currentPage
 
-//hago un     ⬇             destructuring                  ⬇ para poder poner los valores del array que va a llegar a una variable
-        const [popularMoviesResponse, topRatedMoviesResponse] =
-          await Promise.all([
-            // envio dos solicitudes a la API de una vez y  a que ambas se completen antes de continuar
-            axios.get(popularMoviesUrl), // get la info de popular url, y se la asigno a popular response (eso es x el orden)
-            axios.get(topRatedMoviesUrl), // get la info de mejor puntuada url, y se la asigno a mejor puntuada response (eso es x el orden)
-          ]);
 
-        setPopularMovies(popularMoviesResponse.data.results);
-        setTopRatedMovies(topRatedMoviesResponse.data.results);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <>
-      <MovieCarousel popularMovies={popularMovies} />
+      <MovieCarousel releasedMovies={releasedMovies} />
       <div style={{ display: "flex", justifyContent: "space-around" }}>
-{/* Expresión ternaria para renderizar los componentes solo si los arrays tienen datos el uso de if en jsx no me lo permitia*/}
+{/* Expresión ternaria para renderizar los componentes solo si los arrays tienen datos -- el uso de if en jsx no me lo permitia*/}
         {popularMovies.length > 0 && topRatedMovies.length > 0 && (
           <>
             <div style={{ flex: "1", marginRight: "10px" }}>

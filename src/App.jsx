@@ -1,9 +1,9 @@
-//ESTILOS
-import "./App.css";
-
 //COMPONENTES
 import { Header, Footer } from "./components/static";
 import { Home, MovieCategoryTab } from "./views" 
+
+//ESTILOS
+import "./App.css";
 
 //ENRUTADORES
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -17,15 +17,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:movieCategory" element={<MovieCategoryTab />} />
+        {/* <Route path="/:movieCategory/:detail" element={<MovieCategoryTab />} /> */}
         <Route path="/searchMovies" element={<></>} />
         <Route path="/favoriteMovies" element={<></>} />
-        <Route path="/movieDetail/:idMovie" element={<></>} />
         <Route path="*" element={<h1>OPSY</h1>} />
       </Routes>
       <Footer />
