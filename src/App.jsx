@@ -1,6 +1,6 @@
 //COMPONENTES
 import { Header, Footer } from "./components/static";
-import { Home, MovieCategoryTab } from "./views" 
+import { Home, MovieCategoryTab, SearchMovies } from "./views" 
 
 //ESTILOS
 import "./App.css";
@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:movieCategory" element={<MovieCategoryTab />} />
         {/* <Route path="/:movieCategory/:detail" element={<MovieCategoryTab />} /> */}
-        <Route path="/searchMovies" element={<></>} />
+        <Route path="/searchMovies" element={<SearchMovies />} />
         <Route path="/favoriteMovies" element={<></>} />
         <Route path="*" element={<h1>OPSY</h1>} />
       </Routes>

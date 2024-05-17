@@ -9,21 +9,38 @@ import useMovie from "../hooks/useMovie";
 import { Grid, Typography, Button, IconButton, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
-const GridOfMovies = () => {
+const GridOfMovies = ({ searchedMovie }) => {
+  //!PORQUE TENGO QUE PONER searchedMovie COMO PROP, PERO SI LO TRAIA A TRAVES DEL USEMOVIE NO ME LO DEJABA? (lo estoy trayendo con usemovie en searchmovies y pasandoselo aca como prop, wtf?)
 
   const { movieCategory } = useParams();
 
-  const { getAllReleasedMovies, releasedMovies, getAllPopularMovies, popularMovies, currentPage, setCurrentPage, pages} = useMovie();
+  const {
+    getAllReleasedMovies,
+    releasedMovies,
+    getAllPopularMovies,
+    popularMovies,
+    currentPage,
+    setCurrentPage,
+    pages,
+  } = useMovie();
 
   useEffect(() => {
-    if(movieCategory === "latestReleases"){
-      getAllReleasedMovies(currentPage)
-    } else if (movieCategory === "popularMovies"){
-      getAllPopularMovies(currentPage)
+    if (movieCategory === "latestReleases") {
+      getAllReleasedMovies(currentPage);
+    } else if (movieCategory === "popularMovies") {
+      getAllPopularMovies(currentPage);
     }
   }, [movieCategory, currentPage]);
-  
-  const movies = movieCategory === "latestReleases" ? releasedMovies : popularMovies;
+
+  let movies = [];
+
+  if (movieCategory === "latestReleases") {
+    movies = releasedMovies;
+  } else if (movieCategory === "popularMovies") {
+    movies = popularMovies;
+  } else if (searchedMovie.length > 0) {
+    movies = searchedMovie;
+  }
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -33,10 +50,9 @@ const GridOfMovies = () => {
     setCurrentPage(currentPage - 1);
   };
 
-  useEffect(()=> {
-    setCurrentPage(1) 
-  }, [movieCategory])
-
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [movieCategory]);
 
   const getMovieImageUrl = (movie) => {
     if (!movie.poster_path) {
@@ -44,7 +60,6 @@ const GridOfMovies = () => {
     }
     return `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
   };
-
 
   return (
     <>
