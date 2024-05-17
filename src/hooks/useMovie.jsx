@@ -4,17 +4,17 @@ import axios from "axios";
 //HOOKS
 import { useState } from "react";
 
-
 const useMovie = () => {
   const apiKey = "d680d948c76d81953776f10bdf72158a";
-  const [releasedMovies, setReleasedMovies] = useState([]); // Últimas películas estrenadas
-  const [popularMovies, setPopularMovies] = useState([]); // Películas más populares
-  const [topRatedMovies, setTopRatedMovies] = useState([]); // Películas mejor puntuadas
-  const [oneMovie, setOneMovie] = useState({}); // Una película específica por ID
-  const [pages, setTotalPages] = useState(0); // Total de páginas en esa categoría
-  const [currentPage, setCurrentPage] = useState(1); // Número de página actual en esa categoría
+  const [releasedMovies, setReleasedMovies] = useState([]); // Ultimas peliculas estrenadas
+  const [popularMovies, setPopularMovies] = useState([]); // PelIculas más populares
+  const [topRatedMovies, setTopRatedMovies] = useState([]); // PelIculas mejor puntuadas
+  const [searchedMovie, setSearchedMovie] = useState([]); //Peliculas que coincidan con las letras buscadas
+  const [oneMovie, setOneMovie] = useState({}); // Una pelicula especifica por ID
+  const [pages, setTotalPages] = useState(0); // Total de paginas en esa categoria
+  const [currentPage, setCurrentPage] = useState(1); // Numero de pagina actual en esa categoria
 
-  // Obtener las últimas películas estrenadas -CARRUSEL Y TAB
+  // Obtener las ultimas peliculas estrenadas -CARRUSEL Y TAB
   const getAllReleasedMovies = async (currentPage = 1) => {
     try {
       const moviesUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${currentPage}`;
@@ -22,11 +22,11 @@ const useMovie = () => {
       setReleasedMovies(response.data.results);
       setTotalPages(response.data.total_pages);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data for all released movies:", error);
     }
   };
 
-  // Obtener películas populares -TAB Y SCROLL HOME 
+  // Obtener peliculas populares -TAB Y SCROLL HOME
   const getAllPopularMovies = async (currentPage = 1) => {
     try {
       const moviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`;
@@ -34,11 +34,11 @@ const useMovie = () => {
       setPopularMovies(response.data.results);
       setTotalPages(response.data.total_pages);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data for all popular movies:", error);
     }
   };
 
-  // Obtener películas mejor puntuadas -SOLO SCROLL HOME
+  // Obtener peliculas mejor puntuadas -SOLO SCROLL HOME
   const getAllTopMovies = async (currentPage = 1) => {
     try {
       const moviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&page=${currentPage}`;
@@ -46,18 +46,29 @@ const useMovie = () => {
       setTopRatedMovies(response.data.results);
       setTotalPages(response.data.total_pages);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data for all top rated movies:", error);
     }
   };
 
-  // Obtener una película específica por ID
+  // Obtener peliculas que coincidan con el nombre buscado - SEARCH TAB
+  const getSearchedMovies = async (value) => {
+    try {
+      const moviesUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${value}`;
+      const response = await axios.get(moviesUrl);
+      setSearchedMovie(response.data.results);
+    } catch (error) {
+      console.error("Error fetching data for searched movie:", error);
+    }
+  };
+
+  // Obtener una pelicula especifica por ID
   const getOneMovie = async (id) => {
     try {
       const moviesUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
       const response = await axios.get(moviesUrl);
       setOneMovie(response.data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data for the movie:", error);
     }
   };
 
@@ -65,15 +76,16 @@ const useMovie = () => {
     releasedMovies, // used
     popularMovies, // used
     topRatedMovies, // used
+    searchedMovie, // used
     oneMovie,
     pages, // used
     currentPage, // used
     getAllReleasedMovies, // used
     getAllPopularMovies, // used
     getAllTopMovies, // used
+    getSearchedMovies, // used
     getOneMovie,
     setCurrentPage, // used
   };
 };
-
 export default useMovie;
