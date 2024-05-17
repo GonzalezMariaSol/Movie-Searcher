@@ -1,11 +1,12 @@
+//NAVEGACION
+import { useNavigate } from "react-router-dom"; 
+
 //MUI ELEMENTOS
 import { IconButton } from "@mui/material";
 
 //ESTILOS
 import styled from "styled-components";
 
-//NAVEGACION
-import { useNavigate } from "react-router-dom"; 
 
 //tomo los valores de iconButton pero los customizo un poco a mi necesidad
 const CustomIconButton = styled(IconButton)`

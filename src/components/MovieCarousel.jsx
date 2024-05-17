@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function MovieCarousel({ popularMovies }) {
+function MovieCarousel({ releasedMovies }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -19,7 +19,7 @@ function MovieCarousel({ popularMovies }) {
 
   return (
     <Slider {...settings}>
-      {popularMovies.map((movie) => (
+      {releasedMovies.map((movie) => (
         <div key={movie.id}>
           <MovieSlide movie={movie} />
         </div>

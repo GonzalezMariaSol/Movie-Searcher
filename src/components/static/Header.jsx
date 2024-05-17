@@ -1,8 +1,9 @@
+//COMPONENTES
+import { Navbar } from "./";
+
 //MUI ELEMENTOS
 import { AppBar, Toolbar } from "@mui/material";
 
-//COMPONENTES
-import { Navbar } from "./";
 
 const Header = () => {
   return (
