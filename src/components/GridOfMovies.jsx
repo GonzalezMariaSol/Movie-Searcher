@@ -8,6 +8,7 @@ import useMovie from "../hooks/useMovie";
 //MUI
 import { Grid, Typography, Button, IconButton, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const GridOfMovies = ({ searchedMovie }) => {
   //!PORQUE TENGO QUE PONER searchedMovie COMO PROP, PERO SI LO TRAIA A TRAVES DEL USEMOVIE NO ME LO DEJABA? (lo estoy trayendo con usemovie en searchmovies y pasandoselo aca como prop, wtf?)
@@ -110,24 +111,44 @@ const GridOfMovies = ({ searchedMovie }) => {
                   {movie.title}
                 </Typography>
               </Box>
-
-              <IconButton
-                sx={{
-                  backgroundColor: "blue",
-                  color: "#fff",
-                  borderRadius: "0",
-                  flexGrow: 1,
-                  maxHeight: "50px",
-                  "&:hover": {
-                    backgroundColor: "red",
-                    "& svg": {
-                      color: "blue",
+              <Box style={{ backgroundColor: "pink", display:"flex", }}>
+                <IconButton
+                  sx={{
+                    backgroundColor: "black",
+                    borderRight:"2px solid blue",
+                    color: "#fff",
+                    borderRadius: "0",
+                    flexGrow: 1,
+                    maxHeight: "50px",
+                    "&:hover": {
+                      backgroundColor: "red",
+                      "& svg": {
+                        color: "blue",
+                      },
                     },
-                  },
-                }}
-              >
-                <VisibilityIcon />
-              </IconButton>
+                  }}
+                >
+                  <VisibilityIcon />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    backgroundColor: "black",
+                    borderLeft:"2px solid red",
+                    color: "#fff",
+                    borderRadius: "0",
+                    flexGrow: 1,
+                    maxHeight: "50px",
+                    "&:hover": {
+                      backgroundColor: "blue",
+                      "& svg": {
+                        color: "red",
+                      },
+                    },
+                  }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              </Box>
             </Box>
           </Grid>
         ))}
