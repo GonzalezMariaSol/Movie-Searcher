@@ -6,17 +6,24 @@ import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 //MUI
 import { Grid, Typography, Button, IconButton, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { FavoritesContext } from "../context/FavoritesContext";
+
+import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
 
 const GridOfMovies = ({ searchedMovie }) => {
   //!PORQUE TENGO QUE PONER searchedMovie COMO PROP, PERO SI LO TRAIA A TRAVES DEL USEMOVIE NO ME LO DEJABA? (lo estoy trayendo con usemovie en searchmovies y pasandoselo aca como prop, wtf?)
   const navigate = useNavigate(); // inicializamos función navigate
 
   const { movieCategory } = useParams();
+
+  const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
+    useContext(FavoritesContext);
 
   const {
     getAllReleasedMovies,
@@ -134,24 +141,48 @@ const GridOfMovies = ({ searchedMovie }) => {
                 >
                   <VisibilityIcon />
                 </IconButton>
-                <IconButton
-                  sx={{
-                    backgroundColor: "black",
-                    borderLeft: "2px solid red",
-                    color: "#fff",
-                    borderRadius: "0",
-                    flexGrow: 1,
-                    maxHeight: "50px",
-                    "&:hover": {
-                      backgroundColor: "blue",
-                      "& svg": {
-                        color: "red",
+
+                {isFavorite(movie) ? (
+                  <IconButton
+                    onClick={() => removeFavoriteMovie(movie)}
+                    sx={{
+                      backgroundColor: "black",
+                      borderLeft: "2px solid red",
+                      color: "#fff",
+                      borderRadius: "0",
+                      flexGrow: 1,
+                      maxHeight: "50px",
+                      "&:hover": {
+                        backgroundColor: "blue",
+                        "& svg": {
+                          color: "red",
+                        },
                       },
-                    },
-                  }}
-                >
-                  <FavoriteIcon />
-                </IconButton>
+                    }}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton
+                    onClick={() => addFavoriteMovie(movie)}
+                    sx={{
+                      backgroundColor: "black",
+                      borderLeft: "2px solid red",
+                      color: "#fff",
+                      borderRadius: "0",
+                      flexGrow: 1,
+                      maxHeight: "50px",
+                      "&:hover": {
+                        backgroundColor: "blue",
+                        "& svg": {
+                          color: "red",
+                        },
+                      },
+                    }}
+                  >
+                    <FavoriteBorderIcon />
+                  </IconButton>
+                )}
               </Box>
             </Box>
           </Grid>
