@@ -3,10 +3,18 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography, Paper, Button } from "@mui/material";
 import { useMovie } from "../hooks";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useContext } from "react";
+import { FavoritesContext } from "../context/FavoritesContext";
+
+
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const { getOneMovie, oneMovie } = useMovie();
+  const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
+  useContext(FavoritesContext);
+
 
   useEffect(() => {
     getOneMovie(movieId);
@@ -28,7 +36,7 @@ const MovieDetails = () => {
     return movie?.release_date ? movie.release_date.split("-")[0] : null;
   };
 
-  console.log(oneMovie);
+
 
   return (
     <Box
@@ -101,7 +109,6 @@ const MovieDetails = () => {
                     color: "red",
                   },
                 }}
-                onClick={console.log("HOLIS")}
               >
                 <PlayArrowIcon sx={{ fontSize: 30 }} /> See trailer
               </Button>
@@ -121,16 +128,46 @@ const MovieDetails = () => {
                 ))}
               </ul>
             </Box>
+
+
+
+            {isFavorite(oneMovie) ? (
             <Button
               sx={{
                 color: "white",
-                backgroundColor: oneMovie.homepage ? "blue" : "grey",
-                cursor: oneMovie.homepage ? "pointer" : "not-allowed",
+                backgroundColor: "red",
+                "&:hover": {
+                  backgroundColor: "blue",
+                  color: "red",
+                },
               }}
-              disabled={!oneMovie.homepage}
+              startIcon={<FavoriteIcon />}
+              onClick={() => removeFavoriteMovie(oneMovie)}
+
             >
-              See More
+              delete from favorites
             </Button>
+            ) : (
+            <Button
+              sx={{
+                color: "white",
+                backgroundColor: "red",
+                "&:hover": {
+                  backgroundColor: "blue",
+                  color: "red",
+                },
+              }}
+              startIcon={<FavoriteIcon />}
+              onClick={() => addFavoriteMovie(oneMovie)}
+
+
+            >
+              add favorites
+            </Button>
+            )}
+
+
+
           </Grid>
         </Grid>
       </Box>
