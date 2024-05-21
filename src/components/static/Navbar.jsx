@@ -13,13 +13,6 @@ const CustomImg = styled.img`
   object-fit: contain;
 `;
 
-const CustomIconButton = styled(IconButton)`
-  flex: 1 1 auto; // Ajuste para permitir reacomodamiento y espacio entre botones
-  height: auto;
-  padding: 0;
-  position: relative;
-  margin: 10px 20px; // Margen adicional entre los botones
-`;
 
 const TextOverlay = styled.div`
   position: absolute;
@@ -35,45 +28,51 @@ const TextOverlay = styled.div`
 `;
 
 const CustomBox = styled(Box)`
-  width: 70vh;
+  max-width: 100%;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-around;
+`;
+
+const CustomIconButton = styled(IconButton)`
+  flex: 1 1 10%; /* Establece un tamaño mínimo y permitir el ajuste automático */
+  height: auto;
+  padding: 0;
+  position: relative;
+  margin: 10px 20px;
 `;
 
 const Navbar = () => {
   const navigate = useNavigate(); // inicializamos funcion navigate
 
   return (
- 
+    <CustomBox sx={{ backgroundColor: "purple" }}>
+      <CustomIconButton onClick={() => navigate("/")}>
+        <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
+        <TextOverlay>Home</TextOverlay>
+      </CustomIconButton>
 
+      <CustomIconButton onClick={() => navigate("/latestReleases")}>
+        <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
+        <TextOverlay>Recent Releases</TextOverlay>
+      </CustomIconButton>
 
-      <CustomBox>
-        <CustomIconButton onClick={() => navigate("/")}>
-          <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
-          <TextOverlay>Home</TextOverlay>
-        </CustomIconButton>
+      <CustomIconButton onClick={() => navigate("/popularMovies")}>
+        <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
+        <TextOverlay>Popular</TextOverlay>
+      </CustomIconButton>
 
-        <CustomIconButton onClick={() => navigate("/latestReleases")}>
-          <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
-          <TextOverlay>Recent Releases</TextOverlay>
-        </CustomIconButton>
+      <CustomIconButton onClick={() => navigate("/searchMovies")}>
+        <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
+        <TextOverlay>Search</TextOverlay>
+      </CustomIconButton>
 
-        <CustomIconButton onClick={() => navigate("/popularMovies")}>
-          <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
-          <TextOverlay>Popular</TextOverlay>
-        </CustomIconButton>
-
-        <CustomIconButton onClick={() => navigate("/searchMovies")}>
-          <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
-          <TextOverlay>Search</TextOverlay>
-        </CustomIconButton>
-
-        <CustomIconButton onClick={() => navigate("/favoriteMovies")}>
-          <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
-          <TextOverlay>Favorites</TextOverlay>
-        </CustomIconButton>
-      </CustomBox>
+      <CustomIconButton onClick={() => navigate("/favoriteMovies")}>
+        <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
+        <TextOverlay>Favorites</TextOverlay>
+      </CustomIconButton>
+    </CustomBox>
   );
 };
 
