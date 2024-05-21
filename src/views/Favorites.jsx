@@ -28,6 +28,15 @@ const Favorites = () => {
 
   return (
     <>
+    <Box sx={{display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      textAlign: 'center',
+      fontSize:"20px",
+      fontFamily: "Luckiest Guy, cursive",
+    }}>
+    <p>Total of favorite movies saved: {favoritesMovies.length}</p>
+    </Box>
       <Grid container spacing={1}>
         {favoritesMovies.map((movie, index) => (
           <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
