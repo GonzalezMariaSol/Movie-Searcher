@@ -36,7 +36,7 @@ const CustomBox = styled(Box)`
 `;
 
 const CustomIconButton = styled(IconButton)`
-  flex: 1 1 10%; /* Establece un tamaño mínimo y permitir el ajuste automático */
+  flex: 1 1 10%; 
   height: auto;
   padding: 0;
   position: relative;
@@ -47,7 +47,7 @@ const Navbar = () => {
   const navigate = useNavigate(); // inicializamos funcion navigate
 
   return (
-    <CustomBox sx={{ backgroundColor: "purple" }}>
+    <CustomBox>
       <CustomIconButton onClick={() => navigate("/")}>
         <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
         <TextOverlay>Home</TextOverlay>
