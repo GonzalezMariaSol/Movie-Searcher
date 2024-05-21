@@ -24,7 +24,7 @@ const TrailerPage = () => {
           md: "80vh", 
           lg: "90vh", 
         },
-        backgroundColor: "yellow",
+        backgroundColor: "black",
         padding: "20px",
         position: "relative",
         overflow: "hidden",
