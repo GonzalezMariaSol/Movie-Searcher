@@ -38,37 +38,49 @@ const MovieDetails = () => {
   return (
     <Box
       sx={{
+        position: "relative",
         backgroundImage: `url(${getMovieBackgroundImageUrl(oneMovie)})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "100%",
         width: "100%",
+        overflow: "hidden",
+        height: "100%",
+
       }}
     >
       <Box
         sx={{
-          width: "100%",
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
           backgroundColor: "#00000085",
-          height: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          height:"100%"
         }}
       >
         <Grid
           container
-          sx={{ height: "85%", width: "75%", padding: 2 }}
+          sx={{
+            width: "75%",
+            padding: 2,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            height:"100%"
+          }}
           spacing={2}
-          display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-          flexWrap={"wrap"}
+          minHeight="100%" 
         >
           <Box
             sx={{
               width: "40%",
-              height:"95%",
+              height: "95%",
               overflow: "hidden",
               "@media (max-width: 890px)": {
                 width: "70%",
