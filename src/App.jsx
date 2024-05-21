@@ -1,6 +1,12 @@
 //COMPONENTES
 import { Header, Footer } from "./components/static";
-import { Home, MovieCategoryTab, SearchMovies, Favorites } from "./views" 
+import {
+  Home,
+  MovieCategoryTab,
+  SearchMovies,
+  Favorites,
+  TrailerPage,
+} from "./views";
 import FavoritesContextProvider from "./context/FavoritesContext";
 import { MovieDetails } from "./components";
 
@@ -9,13 +15,6 @@ import "./App.css";
 
 //ENRUTADORES
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
-// //!Nose si debo usar esta key
-// const APIReadAccessToken =
-//   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjgwZDk0OGM3NmQ4MTk1Mzc3NmYxMGJkZjcyMTU4YSIsInN1YiI6IjY2NDIzNzE2NzUxYmNkMTIyMjAxZDI0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XRWsE8_TicEavfOaBPEtFs9jKflHi6u2bdiiGulvnoo";
-
-
 
 function App() {
   return (
@@ -28,6 +27,7 @@ function App() {
           <Route path="/searchMovies" element={<SearchMovies />} />
           <Route path="/favoriteMovies" element={<Favorites />} />
           <Route path="/detail/:movieId" element={<MovieDetails />} />
+          <Route path="/trailer/:videoId" element={<TrailerPage />} />
           <Route path="*" element={<h1>OPSY</h1>} />
         </Routes>
         <Footer />

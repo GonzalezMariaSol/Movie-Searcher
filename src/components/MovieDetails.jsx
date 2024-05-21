@@ -6,15 +6,14 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
-
-
+import { useNavigate } from "react-router-dom";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const { getOneMovie, oneMovie } = useMovie();
+  const { getOneMovie, oneMovie, getMovieForTrailer } = useMovie();
   const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
-  useContext(FavoritesContext);
-
+    useContext(FavoritesContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getOneMovie(movieId);
@@ -35,8 +34,6 @@ const MovieDetails = () => {
   const getReleasedYear = (movie) => {
     return movie?.release_date ? movie.release_date.split("-")[0] : null;
   };
-
-
 
   return (
     <Box
@@ -102,7 +99,11 @@ const MovieDetails = () => {
                   {getReleasedYear(oneMovie)}
                 </span>
               </Typography>
+
               <Button
+                onClick={() => {
+                  navigate(`/trailer/${oneMovie.id}`);
+                }}
                 sx={{
                   color: "white",
                   "&:hover": {
@@ -118,7 +119,7 @@ const MovieDetails = () => {
             </Box>
             <Box>
               <Typography variant="h6" component="p">
-                Géneros:
+              Genders:
               </Typography>
               <ul>
                 {oneMovie?.genres?.map((genre) => (
@@ -129,45 +130,37 @@ const MovieDetails = () => {
               </ul>
             </Box>
 
-
-
             {isFavorite(oneMovie) ? (
-            <Button
-              sx={{
-                color: "white",
-                backgroundColor: "red",
-                "&:hover": {
-                  backgroundColor: "blue",
-                  color: "red",
-                },
-              }}
-              startIcon={<FavoriteIcon />}
-              onClick={() => removeFavoriteMovie(oneMovie)}
-
-            >
-              delete from favorites
-            </Button>
+              <Button
+                sx={{
+                  color: "white",
+                  backgroundColor: "red",
+                  "&:hover": {
+                    backgroundColor: "blue",
+                    color: "red",
+                  },
+                }}
+                startIcon={<FavoriteIcon />}
+                onClick={() => removeFavoriteMovie(oneMovie)}
+              >
+                delete from favorites
+              </Button>
             ) : (
-            <Button
-              sx={{
-                color: "white",
-                backgroundColor: "red",
-                "&:hover": {
-                  backgroundColor: "blue",
-                  color: "red",
-                },
-              }}
-              startIcon={<FavoriteIcon />}
-              onClick={() => addFavoriteMovie(oneMovie)}
-
-
-            >
-              add favorites
-            </Button>
+              <Button
+                sx={{
+                  color: "white",
+                  backgroundColor: "red",
+                  "&:hover": {
+                    backgroundColor: "blue",
+                    color: "red",
+                  },
+                }}
+                startIcon={<FavoriteIcon />}
+                onClick={() => addFavoriteMovie(oneMovie)}
+              >
+                add favorites
+              </Button>
             )}
-
-
-
           </Grid>
         </Grid>
       </Box>
