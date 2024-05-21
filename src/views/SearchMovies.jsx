@@ -20,12 +20,11 @@ const SearchMovies = () => {
   };
 
   return (
-      <Box>
+      <Box >
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            backgroundColor: "pink",
           }}
         >
           <TextField
@@ -44,7 +43,9 @@ const SearchMovies = () => {
             }}
           />
         </Box>
+        <Box sx={{margin:"5vh"}}>
         <GridOfMovies searchedMovie={searchedMovie} />
+        </Box>
       </Box>
   );
 };
