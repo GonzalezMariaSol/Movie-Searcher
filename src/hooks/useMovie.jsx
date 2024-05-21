@@ -80,8 +80,6 @@ const useMovie = () => {
     try{
       const trailerURL = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
       const response = await axios.get(trailerURL);
-      // const infoFirstTrailer = response.data.results[0]
-      // console.log(infoFirstTrailer.key);
       setTrailerMovieInfo(response.data.results[0])
     } catch (error){
       console.error("Error fetching data for the movie:", error);

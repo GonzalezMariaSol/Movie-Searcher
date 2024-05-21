@@ -24,6 +24,7 @@ const MovieCategoryTab = () => {
             : "Popular Movies"}
         </Typography>
         <GridOfMovies />
+        
       </Box>
     </Box>
   );

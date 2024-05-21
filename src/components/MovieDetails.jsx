@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const { getOneMovie, oneMovie, getMovieForTrailer } = useMovie();
+  const { getOneMovie, oneMovie } = useMovie();
   const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
     useContext(FavoritesContext);
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: 560,
+        height: "100%",
         width: "100%",
       }}
     >
@@ -63,16 +63,32 @@ const MovieDetails = () => {
           display={"flex"}
           flexDirection={"row"}
           justifyContent={"space-between"}
+          flexWrap={"wrap"}
         >
-          <Grid item xs={12} sm={4} sx={{ overflow: "hidden" }}>
-            <Paper sx={{ height: "100%", overflow: "hidden" }}>
-              <img
-                src={getMovieImageUrl(oneMovie)}
-                alt="Movie Poster"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </Paper>
-          </Grid>
+          <Box
+            sx={{
+              width: "40%",
+              overflow: "hidden",
+              "@media (max-width: 890px)": {
+                width: "70%",
+              },
+            }}
+          >
+            <img
+              src={getMovieImageUrl(oneMovie)}
+              alt="Movie Poster"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                transform: "scale(1)",
+                transition: "transform 0.3s ease",
+                "@media (maxWidth: 890px)": {
+                  transform: "scale(0.8)",
+                },
+              }}
+            />
+          </Box>
 
           <Grid
             item
@@ -119,7 +135,7 @@ const MovieDetails = () => {
             </Box>
             <Box>
               <Typography variant="h6" component="p">
-              Genders:
+                Genders:
               </Typography>
               <ul>
                 {oneMovie?.genres?.map((genre) => (

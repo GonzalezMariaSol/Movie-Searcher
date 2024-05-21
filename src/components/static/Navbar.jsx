@@ -1,26 +1,24 @@
-//NAVEGACION
-import { useNavigate } from "react-router-dom"; 
+// NAVEGACION
+import { useNavigate } from "react-router-dom";
 
-//MUI ELEMENTOS
-import { IconButton } from "@mui/material";
+// MUI ELEMENTOS
+import { IconButton, Box } from "@mui/material";
 
-//ESTILOS
+// ESTILOS
 import styled from "styled-components";
 
-
-//tomo los valores de iconButton pero los customizo un poco a mi necesidad
-const CustomIconButton = styled(IconButton)`
-  width: 110px;
-  height: 110px;
-  padding: 0;
-  position: relative;
+const CustomImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
-//tomo los valores de img, pero los customizo a mi necesidad
-const CustomImg = styled.img`
-  width: 110%;
-  height: 110%;
-  object-fit: contain;
+const CustomIconButton = styled(IconButton)`
+  flex: 1 1 auto; // Ajuste para permitir reacomodamiento y espacio entre botones
+  height: auto;
+  padding: 0;
+  position: relative;
+  margin: 10px 20px; // Margen adicional entre los botones
 `;
 
 const TextOverlay = styled.div`
@@ -36,62 +34,47 @@ const TextOverlay = styled.div`
   font-size: 16px;
 `;
 
+const CustomBox = styled(Box)`
+  width: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
 
 const Navbar = () => {
-
   const navigate = useNavigate(); // inicializamos funcion navigate
 
   return (
-    <>
-      <CustomImg
-        src="src/assets/popcornCharacter.png"
-        alt="Popcorn"
-        style={{
-          width: "100px",
-          height: "100px",
-          marginLeft: "10vh",
-          marginRight: "30px",
-        }}
-      />
-      <p
-        style={{
-          fontSize: "34px",
-          fontWeight: "bold",
-          fontFamily: "Luckiest Guy, cursive",
-          color: "blue",
-        }}
-      >
-        Movie-thon
-      </p>
-      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/")}
->
-        <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
-        <TextOverlay>Home</TextOverlay>
-      </CustomIconButton>
+ 
 
-      <CustomIconButton
-        style={{ marginRight: "50px" }}
-        onClick={() => navigate("/latestReleases")}
-      >
-        <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
-        <TextOverlay>Recent Releases</TextOverlay>
-      </CustomIconButton>
 
-      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/popularMovies")}>
-        <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
-        <TextOverlay>Popular</TextOverlay>
-      </CustomIconButton>
+      <CustomBox>
+        <CustomIconButton onClick={() => navigate("/")}>
+          <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
+          <TextOverlay>Home</TextOverlay>
+        </CustomIconButton>
 
-      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/searchMovies")}>
-        <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
-        <TextOverlay>Search</TextOverlay>
-      </CustomIconButton>
+        <CustomIconButton onClick={() => navigate("/latestReleases")}>
+          <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
+          <TextOverlay>Recent Releases</TextOverlay>
+        </CustomIconButton>
 
-      <CustomIconButton style={{ marginRight: "50px" }} onClick={() => navigate("/favoriteMovies")}>
-        <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
-        <TextOverlay>Favorites</TextOverlay>
-      </CustomIconButton>
-    </>
+        <CustomIconButton onClick={() => navigate("/popularMovies")}>
+          <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
+          <TextOverlay>Popular</TextOverlay>
+        </CustomIconButton>
+
+        <CustomIconButton onClick={() => navigate("/searchMovies")}>
+          <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
+          <TextOverlay>Search</TextOverlay>
+        </CustomIconButton>
+
+        <CustomIconButton onClick={() => navigate("/favoriteMovies")}>
+          <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
+          <TextOverlay>Favorites</TextOverlay>
+        </CustomIconButton>
+      </CustomBox>
   );
 };
+
 export default Navbar;
