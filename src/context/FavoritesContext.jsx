@@ -1,35 +1,52 @@
-import { createContext, useState } from "react"
+import { LocalSeeOutlined } from "@mui/icons-material";
+import { createContext, useEffect, useState } from "react";
 
-export const FavoritesContext = createContext()
+export const FavoritesContext = createContext();
 
-const FavoritesContextProvider = ( {children} ) => {
+const FavoritesContextProvider = ({ children }) => {
+  const [favoritesMovies, setFavoritesMovies] = useState([]);
 
-    const [favoritesMovies, setFavoritesMovies] = useState([])
+//MONTAJE, unica ejecucion al comienzo 
+  useEffect(() => {
+    const favoritedMoviesLS = JSON.parse(localStorage.getItem("favoritedMovies"));
+    setFavoritesMovies(favoritedMoviesLS ? favoritedMoviesLS : []);
+  }, []);
 
-    const addFavoriteMovie = (movie) => {
-        setFavoritesMovies( [...favoritesMovies, movie])
-    }
+//ACTUALIZACION, se va a ejecutar cda vez que vea un cambio den favoritesmovies
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favoritesMovies))
+  }, [favoritesMovies]);
 
-    const removeFavoriteMovie = (movie) => {
-        const movieToDelete = favoritesMovies.filter((favMovie) => favMovie.id !== movie.id )
-        setFavoritesMovies(movieToDelete)
-    }
+  const addFavoriteMovie = (movie) => {
+    setFavoritesMovies([...favoritesMovies, movie]);
+  };
 
-    const isFavorite = (movie) => {
-        const movieExist = favoritesMovies.some((favMovie) => favMovie.id === movie.id)
-        return movieExist
+  const removeFavoriteMovie = (movie) => {
+    const movieToDelete = favoritesMovies.filter(
+      (favMovie) => favMovie.id !== movie.id
+    );
+    setFavoritesMovies(movieToDelete);
+  };
 
-    }
+  const isFavorite = (movie) => {
+    const movieExist = favoritesMovies.some(
+      (favMovie) => favMovie.id === movie.id
+    );
+    return movieExist;
+  };
 
-    const data = {
-        favoritesMovies,
-        addFavoriteMovie,
-        removeFavoriteMovie,
-        isFavorite,
-    }
+  const data = {
+    favoritesMovies,
+    addFavoriteMovie,
+    removeFavoriteMovie,
+    isFavorite,
+  };
 
-    return (
-        <FavoritesContext.Provider value={data}> {children} </FavoritesContext.Provider>
-    )
-}
-export default FavoritesContextProvider
+  return (
+    <FavoritesContext.Provider value={data}>
+      {" "}
+      {children}{" "}
+    </FavoritesContext.Provider>
+  );
+};
+export default FavoritesContextProvider;
