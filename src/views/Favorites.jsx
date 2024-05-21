@@ -37,7 +37,7 @@ const Favorites = () => {
     }}>
     <p>Total of favorite movies saved: {favoritesMovies.length}</p>
     </Box>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} sx={{padding:"1vh"}}>
         {favoritesMovies.map((movie, index) => (
           <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
             <Box

@@ -43,7 +43,7 @@ const SearchMovies = () => {
             }}
           />
         </Box>
-        <Box sx={{margin:"5vh"}}>
+        <Box sx={{padding:"1vh"}}>
         <GridOfMovies searchedMovie={searchedMovie} />
         </Box>
       </Box>
