@@ -103,7 +103,6 @@ const MovieDetails = () => {
               <Button
                 onClick={() => {
                   navigate(`/trailer/${oneMovie.id}`);
-                  getMovieForTrailer(oneMovie.id);
                 }}
                 sx={{
                   color: "white",
@@ -120,7 +119,7 @@ const MovieDetails = () => {
             </Box>
             <Box>
               <Typography variant="h6" component="p">
-                Géneros:
+              Genders:
               </Typography>
               <ul>
                 {oneMovie?.genres?.map((genre) => (
