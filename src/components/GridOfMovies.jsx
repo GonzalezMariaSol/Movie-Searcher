@@ -61,6 +61,7 @@ const GridOfMovies = ({ searchedMovie }) => {
     setCurrentPage(currentPage - 1);
   };
 
+  //!PORQUE FUNCIONA PERO LUEGO DE FALLAR EN EL PRIMER INTENTO?
   useEffect(() => {
     setCurrentPage(1);
   }, [movieCategory]);
@@ -188,29 +189,31 @@ const GridOfMovies = ({ searchedMovie }) => {
           </Grid>
         ))}
       </Grid>
-      <Box display="flex" justifyContent="center" marginTop="5vh">
-        <Button
-          variant="contained"
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          style={{ marginRight: "10px" }}
-        >
-          Previous Page
-        </Button>
-        <Typography
-          variant="body1"
-          style={{ margin: "0 10px", fontWeight: "bold" }}
-        >
-          Page {currentPage} of {pages}
-        </Typography>
-        <Button
-          variant="contained"
-          onClick={handleNextPage}
-          disabled={currentPage === pages}
-        >
-          Next Page
-        </Button>
-      </Box>
+      {!searchedMovie && (
+        <Box display="flex" justifyContent="center" marginTop="5vh">
+          <Button
+            variant="contained"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            style={{ marginRight: "10px" }}
+          >
+            Previous Page
+          </Button>
+          <Typography
+            variant="body1"
+            style={{ margin: "0 10px", fontWeight: "bold" }}
+          >
+            Page {currentPage} of {pages}
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={handleNextPage}
+            disabled={currentPage === pages}
+          >
+            Next Page
+          </Button>
+        </Box>
+      )}
     </>
   );
 };
