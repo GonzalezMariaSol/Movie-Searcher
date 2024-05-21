@@ -19,8 +19,8 @@ const Home = () => {
 
   return (
     <>
-      <MovieCarousel releasedMovies={releasedMovies} />
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <MovieCarousel releasedMovies={releasedMovies}/>
+      <div style={{ display: "flex", justifyContent: "space-around", flexWrap:"wrap"}}>
 {/* Expresion ternaria para renderizar los componentes solo si los arrays tienen datos -- el uso de if en jsx no me lo permitia*/}
         {popularMovies.length > 0 && topRatedMovies.length > 0 && (
           <>

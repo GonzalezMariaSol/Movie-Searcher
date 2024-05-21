@@ -39,7 +39,6 @@ const CustomBox = styled(Box)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background-color: red;
 `;
 
 const Navbar = () => {
