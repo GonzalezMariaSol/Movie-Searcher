@@ -68,6 +68,7 @@ const MovieDetails = () => {
           <Box
             sx={{
               width: "40%",
+              height:"95%",
               overflow: "hidden",
               "@media (max-width: 890px)": {
                 width: "70%",
