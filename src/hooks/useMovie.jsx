@@ -13,7 +13,6 @@ const useMovie = () => {
   const [oneMovie, setOneMovie] = useState({}); // Una pelicula especifica por ID
   const [trailerMovieInfo, setTrailerMovieInfo] = useState({})
   const [pages, setTotalPages] = useState(0); // Total de paginas en esa categoria
-  const [currentPage, setCurrentPage] = useState(1); // Numero de pagina actual en esa categoria
 
 
 
@@ -93,13 +92,11 @@ const useMovie = () => {
     searchedMovie, // used
     oneMovie, //used
     pages, // used
-    currentPage, // used
     getAllReleasedMovies, // used
     getAllPopularMovies, // used
     getAllTopMovies, // used
     getSearchedMovies, // used
     getOneMovie, //used
-    setCurrentPage, // used
     getMovieForTrailer, //used
     trailerMovieInfo,
   };
