@@ -16,8 +16,13 @@ import { FavoritesContext } from "../context/FavoritesContext";
 import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
 
+import { useState } from "react";
+
 const GridOfMovies = ({ searchedMovie }) => {
-  //!PORQUE TENGO QUE PONER searchedMovie COMO PROP, PERO SI LO TRAIA A TRAVES DEL USEMOVIE NO ME LO DEJABA? (lo estoy trayendo con usemovie en searchmovies y pasandoselo aca como prop, wtf?)
+  const [currentPage, setCurrentPage] = useState(1); // Numero de pagina actual en esa categoria
+
+  const [currentCategory, setCurrentCategory] = useState("");
+
   const navigate = useNavigate(); // inicializamos función navigate
 
   const { movieCategory } = useParams();
@@ -30,16 +35,25 @@ const GridOfMovies = ({ searchedMovie }) => {
     releasedMovies,
     getAllPopularMovies,
     popularMovies,
-    currentPage,
-    setCurrentPage,
     pages,
   } = useMovie();
 
   useEffect(() => {
-    if (movieCategory === "latestReleases") {
-      getAllReleasedMovies(currentPage);
-    } else if (movieCategory === "popularMovies") {
-      getAllPopularMovies(currentPage);
+    if (movieCategory !== currentCategory) {
+      setCurrentPage(1);
+      if (movieCategory === "latestReleases") {
+        getAllReleasedMovies();
+      } else if (movieCategory === "popularMovies") {
+        getAllPopularMovies();
+      }
+      setCurrentCategory(movieCategory);
+    } else {
+      if (movieCategory === "latestReleases") {
+        getAllReleasedMovies(currentPage);
+      } else if (movieCategory === "popularMovies") {
+        getAllPopularMovies(currentPage);
+      }
+      setCurrentCategory(movieCategory);
     }
   }, [movieCategory, currentPage]);
 
@@ -56,16 +70,9 @@ const GridOfMovies = ({ searchedMovie }) => {
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
   };
-
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
-
-  //!PORQUE FUNCIONA PERO LUEGO DE FALLAR EN EL PRIMER INTENTO?
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [movieCategory]);
-
   const getMovieImageUrl = (movie) => {
     if (!movie.poster_path) {
       return null;
