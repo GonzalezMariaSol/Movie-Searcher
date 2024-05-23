@@ -1,4 +1,4 @@
-import { Grid, Typography, IconButton, Box } from "@mui/material";
+import { Grid, Typography, IconButton, Box, Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
@@ -6,38 +6,55 @@ import { FavoritesContext } from "../context/FavoritesContext";
 import { useNavigate } from "react-router-dom";
 
 import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
-import FavoriteBorderIcon from"@mui/icons-material/FavoriteBorder" //corazon vacio
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
 
 const Favorites = () => {
-
   const navigate = useNavigate(); // inicializamos función navigate
 
+  // const {addFavoriteMovie, removeFavoriteMovie, } = useContext(FavoritesContext)
+  const {
+    addFavoriteMovie,
+    removeFavoriteMovie,
+    isFavorite,
+    clearFavoriteLS,
+    favoritesMovies,
+  } = useContext(FavoritesContext);
 
-    // const {addFavoriteMovie, removeFavoriteMovie, } = useContext(FavoritesContext)
-    const { addFavoriteMovie, removeFavoriteMovie, isFavorite, favoritesMovies } =
-    useContext(FavoritesContext);
-
-    const getMovieImageUrl = (movie) => {
-        if (!movie.poster_path) {
-          return null;
-        }
-        return `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
-      };
-    
+  const getMovieImageUrl = (movie) => {
+    if (!movie.poster_path) {
+      return null;
+    }
+    return `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
+  };
 
   return (
     <>
-    <Box sx={{display: 'flex',
-      justifyContent: 'center',
-      width: '100%',
-      textAlign: 'center',
-      fontSize:"20px",
-      fontFamily: "Luckiest Guy, cursive",
-    }}>
-    <p>Total of favorite movies saved: {favoritesMovies.length}</p>
-    </Box>
-      <Grid container spacing={1} sx={{padding:"1vh"}}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          textAlign: "center",
+          fontSize: "20px",
+          fontFamily: "Luckiest Guy, cursive",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            minWidth: "80%",
+          }}
+        >
+          <p>Total of favorite movies saved: {favoritesMovies.length}</p>
+          <Button onClick={() => clearFavoriteLS()}>
+            <p style={{color:"red"}}>Delete all my favorites</p>
+          </Button>
+        </Box>
+      </Box>
+      <Grid container spacing={1} sx={{ padding: "1vh" }}>
         {favoritesMovies.map((movie, index) => (
           <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
             <Box
@@ -105,12 +122,6 @@ const Favorites = () => {
                   <VisibilityIcon />
                 </IconButton>
 
-
-
-
-
-
-
                 {isFavorite(movie) ? (
                   <IconButton
                     onClick={() => removeFavoriteMovie(movie)}
@@ -152,7 +163,6 @@ const Favorites = () => {
                     <FavoriteBorderIcon />
                   </IconButton>
                 )}
-
               </Box>
             </Box>
           </Grid>
