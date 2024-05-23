@@ -156,7 +156,7 @@ const GridOfMovies = ({ searchedMovie }) => {
                     sx={{
                       backgroundColor: "black",
                       borderLeft: "2px solid red",
-                      color: "#fff",
+                      color: "red",
                       borderRadius: "0",
                       flexGrow: 1,
                       maxHeight: "50px",
