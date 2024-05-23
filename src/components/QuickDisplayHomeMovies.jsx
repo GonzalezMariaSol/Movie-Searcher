@@ -1,5 +1,14 @@
 import { useNavigate } from "react-router-dom"; 
 
+import { useContext } from "react";
+
+import { FavoritesContext } from "../context/FavoritesContext";
+
+import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
+
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
+
+
 //MUI ELEMENTOS
 import {
   List,
@@ -15,6 +24,10 @@ import {
 import { FaRegEye } from "react-icons/fa";
 
 const QuickDisplayHomeMovies = ({ title, movies }) => {
+
+  const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
+  useContext(FavoritesContext);
+
 
   const navigate = useNavigate(); // inicializamos funcion navigate
 
@@ -45,6 +58,39 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
               <IconButton aria-label="eye" onClick={() => navigate(`/detail/${movie.id}`)}>
                 <FaRegEye style={{ fontSize: "30px" }} />
               </IconButton>
+              {isFavorite(movie) ? (
+                  <IconButton
+                    onClick={() => removeFavoriteMovie(movie)}
+                    sx={{
+                      color: "red",
+                      maxHeight: "50px",
+                      "&:hover": {
+                        backgroundColor: "blue",
+                        "& svg": {
+                          color: "red",
+                        },
+                      },
+                    }}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton
+                    onClick={() => addFavoriteMovie(movie)}
+                    sx={{
+                      color: "blue",
+                      maxHeight: "50px",
+                      "&:hover": {
+                        backgroundColor: "blue",
+                        "& svg": {
+                          color: "red",
+                        },
+                      },
+                    }}
+                  >
+                    <FavoriteBorderIcon />
+                  </IconButton>
+                )}
             </ListItemSecondaryAction>
           </ListItem>
         ))}
