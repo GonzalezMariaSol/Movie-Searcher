@@ -10,14 +10,17 @@ import { useNavigate } from "react-router-dom";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const { getOneMovie, oneMovie } = useMovie();
+  const { getOneMovie, oneMovie, isTrailer, getMovieForTrailer } = useMovie();
   const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
     useContext(FavoritesContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getOneMovie(movieId);
+    getMovieForTrailer(movieId);
   }, []);
+
+  console.log(isTrailer);
 
   const getMovieBackgroundImageUrl = (movie) => {
     return movie?.backdrop_path
@@ -51,7 +54,7 @@ const MovieDetails = () => {
       <Box
         sx={{
           // position: "absolute",
-          minHeight:"100vh",
+          minHeight: "100vh",
           top: 0,
           bottom: 0,
           left: 0,
@@ -74,7 +77,7 @@ const MovieDetails = () => {
             // backgroundColor:"red",
           }}
           spacing={2}
-          minHeight="100%" 
+          minHeight="100%"
         >
           <Box
             sx={{
@@ -129,9 +132,10 @@ const MovieDetails = () => {
               </Typography>
 
               <Button
-                onClick={() => {
-                  navigate(`/trailer/${oneMovie.id}`);
-                }}
+                onClick={
+                  isTrailer ? () => navigate(`/trailer/${oneMovie.id}`) : null
+                }
+                disabled={!isTrailer}
                 sx={{
                   color: "white",
                   "&:hover": {
