@@ -49,27 +49,27 @@ const Navbar = () => {
   return (
     <CustomBox>
       <CustomIconButton onClick={() => navigate("/")}>
-        <CustomImg src="src/assets/single popcon 1.png" alt="Popcorn-tab" />
+        <CustomImg src="public/single popcon 1.png" alt="Popcorn-tab" />
         <TextOverlay>Home</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/latestReleases")}>
-        <CustomImg src="src/assets/single popcon 3.png" alt="Popcorn-tab" />
+        <CustomImg src="public/single popcon 3.png" alt="Popcorn-tab" />
         <TextOverlay>Recent Releases</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/popularMovies")}>
-        <CustomImg src="src/assets/single popcon 4.png" alt="Popcorn-tab" />
+        <CustomImg src="public/single popcon 4.png" alt="Popcorn-tab" />
         <TextOverlay>Popular</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/searchMovies")}>
-        <CustomImg src="src/assets/single popcon 2.png" alt="Popcorn-tab" />
+        <CustomImg src="public/single popcon 2.png" alt="Popcorn-tab" />
         <TextOverlay>Search</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/favoriteMovies")}>
-        <CustomImg src="src/assets/single popcon 5.png" alt="Popcorn-tab" />
+        <CustomImg src="public/single popcon 5.png" alt="Popcorn-tab" />
         <TextOverlay>Favorites</TextOverlay>
       </CustomIconButton>
     </CustomBox>
