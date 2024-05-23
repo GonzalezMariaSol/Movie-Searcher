@@ -43,55 +43,74 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
       >
         {title}
       </Typography>
-      <List style={{ overflowY: "auto", maxHeight: "50vh" }}>
+      <List style={{ overflowY: "auto", maxHeight: "50vh", flexDirection: { xs: "column", sm: "row" }, // Cambia la dirección en pantallas pequeñas
+ }}>
         {movies.map((movie) => (
-          <ListItem sx={{ borderBottom: "1px solid grey" }} key={movie.id}>
+          <ListItem
+            sx={{
+              borderBottom: "1px solid grey",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" }, // Cambia la dirección en pantallas pequeñas
+              alignItems: "center",
+            }}
+            key={movie.id}
+          >
             <Avatar
               alt="Avatar"
               src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              sx={{ marginRight: "1.5vw" }}
+              sx={{ marginRight: { xs: "0", sm: "1.5vw" }, marginBottom: { xs: "1vw", sm: "0" } }} // Ajusta el margen según el tamaño de la pantalla
             />
-            <ListItemText primary={movie.title} />
-            <ListItemSecondaryAction>
+            <ListItemText
+              primary={movie.title}
+              sx={{ textAlign: { xs: "center", sm: "left" } }} // Centra el texto en pantallas pequeñas
+            />
+            <ListItemSecondaryAction
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" }, // Cambia la dirección en pantallas pequeñas
+                justifyContent: "center",
+                alignItems: "center",
+                width: { xs: "auto", sm: "auto" }, // Ajusta el ancho según el tamaño de la pantalla
+              }}
+            >
               <IconButton aria-label="eye" onClick={() => navigate(`/detail/${movie.id}`)}>
                 <FaRegEye style={{ fontSize: "30px" }} />
               </IconButton>
               {isFavorite(movie) ? (
-                  <IconButton
-                    onClick={() => removeFavoriteMovie(movie)}
-                    sx={{
-                      color: "red",
-                      flexGrow: 1,
-                      maxHeight: "50px",
-                      "&:hover": {
-                        backgroundColor: "blue",
-                        "& svg": {
-                          color: "red",
-                        },
+                <IconButton
+                  onClick={() => removeFavoriteMovie(movie)}
+                  sx={{
+                    color: "red",
+                    flexGrow: 1,
+                    maxHeight: "50px",
+                    "&:hover": {
+                      backgroundColor: "blue",
+                      "& svg": {
+                        color: "red",
                       },
-                    }}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
-                ) : (
-                  <IconButton
-                    onClick={() => addFavoriteMovie(movie)}
-                    sx={{
-                      color: "gray",
-                      flexGrow: 1,
-                      maxHeight: "50px",
-                      "&:hover": {
-                        backgroundColor: "red",
-                        "& svg": {
-                          color: "blue",
-                        },
+                    },
+                  }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              ) : (
+                <IconButton
+                  onClick={() => addFavoriteMovie(movie)}
+                  sx={{
+                    color: "gray",
+                    flexGrow: 1,
+                    maxHeight: "50px",
+                    "&:hover": {
+                      backgroundColor: "red",
+                      "& svg": {
+                        color: "blue",
                       },
-                    }}
-                  >
-                    <FavoriteBorderIcon />
-                  </IconButton>
-                )}
-
+                    },
+                  }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              )}
             </ListItemSecondaryAction>
           </ListItem>
         ))}
