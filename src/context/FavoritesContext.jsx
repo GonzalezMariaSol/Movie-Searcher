@@ -1,4 +1,4 @@
-import { LocalSeeOutlined } from "@mui/icons-material";
+// import { LocalSeeOutlined } from "@mui/icons-material";
 import { createContext, useEffect, useState } from "react";
 
 export const FavoritesContext = createContext();
@@ -44,8 +44,7 @@ const FavoritesContextProvider = ({ children }) => {
 
   return (
     <FavoritesContext.Provider value={data}>
-      {" "}
-      {children}{" "}
+      {children}
     </FavoritesContext.Provider>
   );
 };
