@@ -9,17 +9,13 @@ import { useContext } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
 import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
 
-
 function MovieSlide({ movie }) {
-  
   const navigate = useNavigate(); // inicializamos función navigate
   const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
     useContext(FavoritesContext);
 
-
   //funcion que se ocupa de crear el link especifico para el poster
   const getMovieImageUrl = (movie) => {
-
     if (!movie.backdrop_path) {
       //si no tiene un poster la peli, devuelve null
       return null;
@@ -33,8 +29,7 @@ function MovieSlide({ movie }) {
       sx={{
         position: "relative",
         width: "100%",
-        height: "75vh",
-        // height:"400px",
+        minHeight: "75vh",
         display: "flex",
         alignItems: "stretch",
         backgroundColor: "red",
@@ -47,7 +42,7 @@ function MovieSlide({ movie }) {
         style={{
           width: "100%",
           objectFit: "cover",
-          objectPosition: "center center", 
+          objectPosition: "center center",
         }}
       />
 
@@ -56,7 +51,8 @@ function MovieSlide({ movie }) {
           position: "absolute",
           backgroundColor: "rgba(0, 0, 0, 0.5)",
           color: "white",
-          width: "80vh",
+          width: "80%",
+          maxWidth: "80vh",
           padding: "10px",
           top: "50%",
           left: "50%",
@@ -66,61 +62,68 @@ function MovieSlide({ movie }) {
           height: "auto",
         }}
       >
-        <h3 style={{ fontWeight: "bold" }}>{movie.title}</h3>
-        <p>{movie.overview}</p>
-        <Box style={{display:"flex", flexDirection:"row", justifyContent:"space-around"}}>
-
-        <Button
+        <Box>
+          <h3 style={{ fontWeight: "bold" }}>{movie.title}</h3>
+          <p>{movie.overview}</p>
+        </Box>
+        <Box
           style={{
-            backgroundColor: "lightblue",
-            color: "white",
-            borderRadius: "5px",
-            width:"50%",
-            marginRight:"4vh"
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
           }}
-          onClick={() => navigate(`/detail/${movie.id}`)}
         >
-          See more...
-        </Button>
-        {isFavorite(movie) ? (
-                  <IconButton
-                    onClick={() => removeFavoriteMovie(movie)}
-                    sx={{
-                      backgroundColor: "black",
-                      color: "red",
-                      borderRadius: "5px",
-                      flexGrow: 1,
-                      maxHeight: "50px",
-                      "&:hover": {
-                        backgroundColor: "blue",
-                        "& svg": {
-                          color: "red",
-                        },
-                      },
-                    }}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
-                ) : (
-                  <IconButton
-                    onClick={() => addFavoriteMovie(movie)}
-                    sx={{
-                      backgroundColor: "black",
-                      color: "#fff",
-                      borderRadius: "5px",
-                      flexGrow: 1,
-                      maxHeight: "50px",
-                      "&:hover": {
-                        backgroundColor: "blue",
-                        "& svg": {
-                          color: "red",
-                        },
-                      },
-                    }}
-                  >
-                    <FavoriteBorderIcon />
-                  </IconButton>
-                )}
+          <Button
+            style={{
+              backgroundColor: "lightblue",
+              color: "white",
+              borderRadius: "5px",
+              width: "50%",
+              marginRight: "4vh",
+            }}
+            onClick={() => navigate(`/detail/${movie.id}`)}
+          >
+            See more...
+          </Button>
+          {isFavorite(movie) ? (
+            <IconButton
+              onClick={() => removeFavoriteMovie(movie)}
+              sx={{
+                backgroundColor: "black",
+                color: "red",
+                borderRadius: "5px",
+                flexGrow: 1,
+                maxHeight: "50px",
+                "&:hover": {
+                  backgroundColor: "blue",
+                  "& svg": {
+                    color: "red",
+                  },
+                },
+              }}
+            >
+              <FavoriteIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={() => addFavoriteMovie(movie)}
+              sx={{
+                backgroundColor: "black",
+                color: "#fff",
+                borderRadius: "5px",
+                flexGrow: 1,
+                maxHeight: "50px",
+                "&:hover": {
+                  backgroundColor: "blue",
+                  "& svg": {
+                    color: "red",
+                  },
+                },
+              }}
+            >
+              <FavoriteBorderIcon />
+            </IconButton>
+          )}
         </Box>
       </Box>
     </Box>
