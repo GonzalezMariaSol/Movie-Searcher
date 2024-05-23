@@ -85,6 +85,7 @@ const useMovie = () => {
     }
   }
 
+
   return {
     releasedMovies, // used
     popularMovies, // used
