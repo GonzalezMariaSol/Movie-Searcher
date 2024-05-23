@@ -2,7 +2,8 @@
 
 
 ## 🚀 About the project
-This project was created in order to complete the 6th of my 6 projects required by the Ada ITW institution, to graduate as a frontend developer. In it, you will be able to see a website that functions to view the latest movie releases, as well as the most popular and highest-rated ones. You will also have the possibility to view each of them in detail, along with their trailer (if available) and to save your favorite ones.
+This project was created in order to complete the 6th of my 6 projects required by the institution [Ada ITW](https://adaitw.org/)
+, to graduate as a [frontend developer](https://adaitw.org/wp-content/uploads/2022/01/Ada-_-Desarrollo-Frontend.pdf). In it, you will be able to see a website that functions to view the latest movie releases, as well as the most popular and highest-rated ones. You will also have the possibility to view each of them in detail, along with their trailer (if available) and to save your favorite ones.
 
 
 ## Demo
