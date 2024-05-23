@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 
 import FavoriteIcon from "@mui/icons-material/Favorite"; //corazon con relleno
-
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; //corazon vacio
 
 
@@ -24,7 +23,6 @@ import {
 import { FaRegEye } from "react-icons/fa";
 
 const QuickDisplayHomeMovies = ({ title, movies }) => {
-
   const { addFavoriteMovie, removeFavoriteMovie, isFavorite } =
   useContext(FavoritesContext);
 
@@ -63,6 +61,7 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
                     onClick={() => removeFavoriteMovie(movie)}
                     sx={{
                       color: "red",
+                      flexGrow: 1,
                       maxHeight: "50px",
                       "&:hover": {
                         backgroundColor: "blue",
@@ -78,12 +77,13 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
                   <IconButton
                     onClick={() => addFavoriteMovie(movie)}
                     sx={{
-                      color: "blue",
+                      color: "gray",
+                      flexGrow: 1,
                       maxHeight: "50px",
                       "&:hover": {
-                        backgroundColor: "blue",
+                        backgroundColor: "red",
                         "& svg": {
-                          color: "red",
+                          color: "blue",
                         },
                       },
                     }}
@@ -91,6 +91,7 @@ const QuickDisplayHomeMovies = ({ title, movies }) => {
                     <FavoriteBorderIcon />
                   </IconButton>
                 )}
+
             </ListItemSecondaryAction>
           </ListItem>
         ))}
