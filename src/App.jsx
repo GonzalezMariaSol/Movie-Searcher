@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//COMPONENTES
+import { Header, Footer } from "./components/static";
+import {
+  Home,
+  MovieCategoryTab,
+  SearchMovies,
+  Favorites,
+  TrailerPage,
+} from "./views";
+import FavoritesContextProvider from "./context/FavoritesContext";
+import { MovieDetails } from "./components";
+
+//ESTILOS
+import "./App.css";
+
+//ENRUTADORES
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <FavoritesContextProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:movieCategory" element={<MovieCategoryTab />} />
+          <Route path="/searchMovies" element={<SearchMovies />} />
+          <Route path="/favoriteMovies" element={<Favorites />} />
+          <Route path="/detail/:movieId" element={<MovieDetails />} />
+          <Route path="/trailer/:videoId" element={<TrailerPage />} />
+          <Route path="*" element={<h1>OPSY</h1>} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </FavoritesContextProvider>
+  );
 }
 
-export default App
+export default App;
