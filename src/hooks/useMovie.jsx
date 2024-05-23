@@ -11,10 +11,9 @@ const useMovie = () => {
   const [topRatedMovies, setTopRatedMovies] = useState([]); // PelIculas mejor puntuadas
   const [searchedMovie, setSearchedMovie] = useState([]); //Peliculas que coincidan con las letras buscadas
   const [oneMovie, setOneMovie] = useState({}); // Una pelicula especifica por ID
-  const [trailerMovieInfo, setTrailerMovieInfo] = useState({})
+  const [trailerMovieInfo, setTrailerMovieInfo] = useState({});
+  const [isTrailer, setIsTrailer] = useState();
   const [pages, setTotalPages] = useState(0); // Total de paginas en esa categoria
-
-
 
   // Obtener las ultimas peliculas estrenadas -CARRUSEL Y TAB
   const getAllReleasedMovies = async (currentPage = 1) => {
@@ -74,17 +73,22 @@ const useMovie = () => {
     }
   };
 
-  //para obtener el url de loS videoS que hay sobre esta pelicula 
+  //para obtener el url de loS videoS que hay sobre esta pelicula
   const getMovieForTrailer = async (movieId) => {
-    try{
+    try {
       const trailerURL = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
       const response = await axios.get(trailerURL);
-      setTrailerMovieInfo(response.data.results[0])
-    } catch (error){
+      setTrailerMovieInfo(response.data.results[0]);
+      if (response.data.results.length > 0) {
+        console.log("hola");
+        setIsTrailer(true);
+      } else {
+        setIsTrailer(false);
+      }
+    } catch (error) {
       console.error("Error fetching data for the movie:", error);
     }
-  }
-
+  };
 
   return {
     releasedMovies, // used
@@ -100,6 +104,7 @@ const useMovie = () => {
     getOneMovie, //used
     getMovieForTrailer, //used
     trailerMovieInfo,
+    isTrailer,
   };
 };
 export default useMovie;
