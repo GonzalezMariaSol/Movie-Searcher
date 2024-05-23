@@ -11,11 +11,12 @@ function MovieSlide({ movie }) {
   //funcion que se ocupa de crear el link especifico para el poster
   const getMovieImageUrl = (movie) => {
 
-    if (!movie.poster_path) {
+    if (!movie.backdrop_path) {
       //si no tiene un poster la peli, devuelve null
       return null;
     }
-    return `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
+    // https://image.tmdb.org/t/p/original/${movie.backdrop_path
+    return `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   };
 
   return (
@@ -23,7 +24,8 @@ function MovieSlide({ movie }) {
       sx={{
         position: "relative",
         width: "100%",
-        height: "65vh",
+        height: "75vh",
+        // height:"400px",
         display: "flex",
         alignItems: "stretch",
         backgroundColor: "red",
@@ -36,7 +38,7 @@ function MovieSlide({ movie }) {
         style={{
           width: "100%",
           objectFit: "cover",
-          objectPosition: "center top", 
+          objectPosition: "center center", 
         }}
       />
 
