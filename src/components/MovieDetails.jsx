@@ -45,13 +45,13 @@ const MovieDetails = () => {
         backgroundRepeat: "no-repeat",
         width: "100%",
         overflow: "hidden",
-        height: "100%",
-
+        minHeight: "100%",
       }}
     >
       <Box
         sx={{
-          position: "absolute",
+          // position: "absolute",
+          minHeight:"100vh",
           top: 0,
           bottom: 0,
           left: 0,
@@ -60,7 +60,6 @@ const MovieDetails = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height:"100%"
         }}
       >
         <Grid
@@ -72,7 +71,7 @@ const MovieDetails = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             flexWrap: "wrap",
-            height:"100%"
+            // backgroundColor:"red",
           }}
           spacing={2}
           minHeight="100%" 
