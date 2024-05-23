@@ -93,6 +93,11 @@ const GridOfMovies = ({ searchedMovie }) => {
                 flexDirection: "column",
                 height: "100%",
                 backgroundColor: "red",
+                transition: "transform 0.2s", 
+                "&:hover": {
+                  transform: "scale(1.05)", 
+                  zIndex: 1, 
+                },
               }}
             >
               <Box
