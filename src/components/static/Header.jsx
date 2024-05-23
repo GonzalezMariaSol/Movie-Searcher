@@ -50,7 +50,7 @@ const Header = () => {
           }}
         >
           <CustomImg
-            src="src/assets/popcornCharacter.png"
+            src="public/popcornCharacter.png"
             alt="Popcorn"
             style={{
               width: "15vh",
