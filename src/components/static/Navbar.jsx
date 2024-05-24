@@ -1,6 +1,8 @@
 // NAVEGACION
 import { useNavigate } from "react-router-dom";
 
+import popcornOne from "../../../public/single popcon 3.png"
+
 // MUI ELEMENTOS
 import { IconButton, Box } from "@mui/material";
 
@@ -44,12 +46,12 @@ const CustomIconButton = styled(IconButton)`
 `;
 
 const Navbar = () => {
-  const navigate = useNavigate(); // inicializamos funcion navigate
+  const navigate = useNavigate();
 
   return (
     <CustomBox>
       <CustomIconButton onClick={() => navigate("/")}>
-        <CustomImg src="public/single popcon 1.png" alt="Popcorn-tab" />
+        <CustomImg src={popcornOne} alt="Popcorn-tab" />
         <TextOverlay>Home</TextOverlay>
       </CustomIconButton>
 
