@@ -1,6 +1,9 @@
 // COMPONENTES
 import { Navbar } from "./";
 
+//CUSTOM BTNS
+import popEatingPopcorn from "../../../public/popcornCharacter.png";
+
 // MUI ELEMENTOS
 import { AppBar, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/material";
@@ -50,7 +53,7 @@ const Header = () => {
           }}
         >
           <CustomImg
-            src="public/popcornCharacter.png"
+            src={popEatingPopcorn}
             alt="Popcorn"
             style={{
               width: "15vh",
