@@ -1,7 +1,12 @@
 // NAVEGACION
 import { useNavigate } from "react-router-dom";
 
-import popcornOne from "../../../public/single popcon 3.png"
+//CUSTOM BTNS
+import popcornOne from "../../../public/single popcon 1.png"
+import popcornThree from "../../../public/single popcon 3.png"
+import popcornFour from "../../../public/single popcon 4.png"
+import popcornTwo from "../../../public/single popcon 2.png"
+import popcornFive from "../../../public/single popcon 5.png"
 
 // MUI ELEMENTOS
 import { IconButton, Box } from "@mui/material";
@@ -56,22 +61,22 @@ const Navbar = () => {
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/latestReleases")}>
-        <CustomImg src="public/single popcon 3.png" alt="Popcorn-tab" />
+        <CustomImg src={popcornTwo} alt="Popcorn-tab" />
         <TextOverlay>Recent Releases</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/popularMovies")}>
-        <CustomImg src="public/single popcon 4.png" alt="Popcorn-tab" />
+        <CustomImg src={popcornThree} alt="Popcorn-tab" />
         <TextOverlay>Popular</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/searchMovies")}>
-        <CustomImg src="public/single popcon 2.png" alt="Popcorn-tab" />
+        <CustomImg src={popcornFour} alt="Popcorn-tab" />
         <TextOverlay>Search</TextOverlay>
       </CustomIconButton>
 
       <CustomIconButton onClick={() => navigate("/favoriteMovies")}>
-        <CustomImg src="public/single popcon 5.png" alt="Popcorn-tab" />
+        <CustomImg src={popcornFive} alt="Popcorn-tab" />
         <TextOverlay>Favorites</TextOverlay>
       </CustomIconButton>
     </CustomBox>
