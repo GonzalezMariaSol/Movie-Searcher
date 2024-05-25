@@ -6,6 +6,7 @@ import {
   SearchMovies,
   Favorites,
   TrailerPage,
+  NotFoundPage
 } from "./views";
 import FavoritesContextProvider from "./context/FavoritesContext";
 import { MovieDetails } from "./components";
@@ -28,7 +29,7 @@ function App() {
           <Route path="/favoriteMovies" element={<Favorites />} />
           <Route path="/detail/:movieId" element={<MovieDetails />} />
           <Route path="/trailer/:videoId" element={<TrailerPage />} />
-          <Route path="*" element={<h1>OPSY</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

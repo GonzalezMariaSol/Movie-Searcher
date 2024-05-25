@@ -80,7 +80,6 @@ const useMovie = () => {
       const response = await axios.get(trailerURL);
       setTrailerMovieInfo(response.data.results[0]);
       if (response.data.results.length > 0) {
-        console.log("hola");
         setIsTrailer(true);
       } else {
         setIsTrailer(false);

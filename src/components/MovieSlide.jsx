@@ -20,7 +20,6 @@ function MovieSlide({ movie }) {
       //si no tiene un poster la peli, devuelve null
       return null;
     }
-    // https://image.tmdb.org/t/p/original/${movie.backdrop_path
     return `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   };
 
