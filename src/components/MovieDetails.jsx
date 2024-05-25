@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Grid, Typography, Paper, Button } from "@mui/material";
+import { Box, Grid, Typography, Button } from "@mui/material";
 import { useMovie } from "../hooks";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,7 +20,6 @@ const MovieDetails = () => {
     getMovieForTrailer(movieId);
   }, []);
 
-  console.log(isTrailer);
 
   const getMovieBackgroundImageUrl = (movie) => {
     return movie?.backdrop_path
